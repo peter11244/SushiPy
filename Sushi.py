@@ -25,11 +25,17 @@ class SushiPy:
     self.players = []
     self.cardset = cardset
     
-    
+  
+
     for i in range(players):
+      if i == 0:
+        cpu = False
+      else:
+        cpu = True
+
       #TODO: add support for Real (Named) vs AI
       #Value Checking on player count
-      self.players.append(Player(i))
+      self.players.append(Player(i, cpu))
     
     print("Using Cardset:", end = "")
     print(self.cardset)
@@ -37,8 +43,6 @@ class SushiPy:
     
        
     try:
-        #This smells bad. Try a rewrite in order to get it looking better
-        #self.newround(round = 1, direction = "Left", desserts = 3)
         self.makeDeck(self.cardset)
         self.newround(1,"Left",5)
         self.newround(2,"Right",3)
@@ -146,7 +150,7 @@ class SushiPy:
         break
     
     for i in self.players:
-      if i.playerNo != 0:
+      if i.cpu:
         i.playCard(0)
     
     
@@ -236,12 +240,13 @@ class Player:
   #A player consists of a seat number, points, a hand, a play area and a dessert store
   
   
-  def __init__(self,number):
+  def __init__(self,number,cpu):
     self.playerNo = number
     self.hand = []
     self.points = 0
     self.playArea = []
     self.dessertStore = []
+    self.cpu = cpu
     
   def addPoints(self, number):
     self.points += number
