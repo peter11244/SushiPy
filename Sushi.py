@@ -103,23 +103,23 @@ class SushiPy:
     #Creates the deck of cards for use in the game
     self.box = []
     if cardset == "My First Meal":
-        for i in range(3):
+        for _ in range(3):
           self.box.append(SushiCard("Squid Nigiri"))
           self.box.append(SushiCard("Maki Rolls", makival= 3))
           self.box.append(SushiCard("Wasabi"))
           self.box.append(SushiCard("Tea"))
           
         
-        for i in range(4):
+        for _ in range(4):
           self.box.append(SushiCard("Egg Nigiri"))
           self.box.append(SushiCard("Maki Rolls", makival= 1))
         
         
-        for i in range(5):
+        for _ in range(5):
           self.box.append(SushiCard("Salmon Nigiri"))
           self.box.append(SushiCard("Maki Rolls", makival= 2))
             
-        for i in range(8):
+        for _ in range(8):
           self.box.append(SushiCard("Tempura"))
           self.box.append(SushiCard("Sashimi"))
           self.box.append(SushiCard("Miso Soup"))
@@ -230,7 +230,7 @@ class SushiPy:
   
   def deal(self):
     for i in self.players:
-      for j in range(9):
+      for _ in range(9):
         i.addHand(self.box.pop(0))
         
       
@@ -308,7 +308,7 @@ class Player:
     
     #Function found online to group the list
     teaScore = 0
-    for a,b in g(sorted(teaList)):
+    for _ , b in g(sorted(teaList)):
       x = sum(1 for _ in b)
       if x > teaScore:
         teaScore = x
